@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--Ionity Bench 1.0.0 (Centurion) on Phoronix Test Suite | (c) 2018-2026 Antwerp Designs | Ionity (Pty) Ltd - AEDI | Policy 986 AED | GPL-3.0-or-later-->
+<PhoronixTestSuite>
+  <SuiteInformation>
+    <Title>Ionity Quick Check</Title>
+    <Version>1.0.0</Version>
+    <TestType>System</TestType>
+    <Description>A five-minute Ionity Bench smoke test: IO-Core on all cores, IO-Mem Triad, IO-Telemetry-SQLite ingest and IO-JSON-MQTT small messages. Use it to sanity-check a freshly imaged edge node or to get a first comparable number from any machine. Fully offline; only a C compiler and Python 3 are needed.</Description>
+    <Maintainer>Johan Wilhelm van Antwerp - Ionity (Pty) Ltd</Maintainer>
+  </SuiteInformation>
+  <Execute>
+    <Test>ionity/io-core</Test>
+    <Arguments>0</Arguments>
+    <Description>Threads: All CPU Cores</Description>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-mem</Test>
+    <Arguments>Triad</Arguments>
+    <Description>Kernel: Triad</Description>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-telemetry-sqlite</Test>
+    <Arguments>ingest</Arguments>
+    <Description>Workload: Ingest</Description>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-json-mqtt</Test>
+    <Arguments>small</Arguments>
+    <Description>Payload: Small Reading</Description>
+  </Execute>
+</PhoronixTestSuite>

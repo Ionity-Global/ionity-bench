@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--Ionity Bench 1.0.0 (Centurion) on Phoronix Test Suite | (c) 2018-2026 Antwerp Designs | Ionity (Pty) Ltd - AEDI | Policy 986 AED | GPL-3.0-or-later-->
+<PhoronixTestSuite>
+  <SuiteInformation>
+    <Title>Ionity Design Workstation</Title>
+    <Version>1.0.0</Version>
+    <TestType>System</TestType>
+    <Description>The Ionity Design Workstation profile reflects the engineering desk: KiCad / CAD / CAM and firmware build work. It combines Ionity IO-Core and IO-Mem with Blender BMW27 and Classroom (CPU), Embree Crown, Intel Open Image Denoise, Linux kernel defconfig compilation, 7-Zip compression and PyBench from OpenBenchmarking.org.</Description>
+    <Maintainer>Johan Wilhelm van Antwerp - Ionity (Pty) Ltd</Maintainer>
+  </SuiteInformation>
+  <Execute>
+    <Test>ionity/io-core</Test>
+    <Arguments>0</Arguments>
+    <Description>Threads: All CPU Cores</Description>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-mem</Test>
+    <Arguments>Triad</Arguments>
+    <Description>Kernel: Triad</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/blender-5.0.0</Test>
+    <Arguments>-b ../bmw27_gpu.blend -x 1 -F JPEG -f 1 -- --cycles-device CPU</Arguments>
+    <Description>Blend File: BMW27 - Compute: CPU-Only</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/blender-5.0.0</Test>
+    <Arguments>-b ../classroom_gpu.blend -x 1 -F JPEG -f 1 -- --cycles-device CPU</Arguments>
+    <Description>Blend File: Classroom - Compute: CPU-Only</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/embree-1.7.0</Test>
+    <Arguments>pathtracer -c crown/crown.ecs</Arguments>
+    <Description>Binary: Pathtracer - Model: Crown</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/oidn-2.3.0</Test>
+    <Arguments>-r RT.hdr_alb_nrm.3840x2160 -d cpu</Arguments>
+    <Description>Run: RT.hdr_alb_nrm.3840x2160 - Device: CPU-Only</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/build-linux-kernel-1.17.1</Test>
+    <Arguments>defconfig</Arguments>
+    <Description>Build: defconfig</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/compress-7zip-1.12.0</Test>
+    <Mode>BATCH</Mode>
+  </Execute>
+  <Execute>
+    <Test>pts/pybench-1.1.3</Test>
+    <Mode>BATCH</Mode>
+  </Execute>
+</PhoronixTestSuite>

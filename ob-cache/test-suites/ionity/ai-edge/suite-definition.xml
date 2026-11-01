@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!--Ionity Bench 1.0.0 (Centurion) on Phoronix Test Suite | (c) 2018-2026 Antwerp Designs | Ionity (Pty) Ltd - AEDI | Policy 986 AED | GPL-3.0-or-later-->
+<PhoronixTestSuite>
+  <SuiteInformation>
+    <Title>Ionity AI Edge</Title>
+    <Version>1.0.0</Version>
+    <TestType>Processor</TestType>
+    <Description>The Ionity AI Edge profile measures on-device inference capability for CPUs without (or alongside) an NPU such as Hailo: Ionity IO-AI-MatMul in FP32 and INT8 plus established OpenBenchmarking.org inference tests - TensorFlow Lite MobileNet (float and quantised), ONNX Runtime ResNet50 INT8 / YOLOv4 / super-resolution, NCNN, MNN, Llama.cpp granite-3B and Whisper.cpp base. The upstream tests download their models and frameworks from OpenBenchmarking.org mirrors.</Description>
+    <Maintainer>Johan Wilhelm van Antwerp - Ionity (Pty) Ltd</Maintainer>
+  </SuiteInformation>
+  <Execute>
+    <Test>ionity/io-ai-matmul</Test>
+    <Mode>BATCH</Mode>
+  </Execute>
+  <Execute>
+    <Test>pts/tensorflow-lite-1.1.0</Test>
+    <Arguments>--graph=mobilenet_v1_1.0_224.tflite</Arguments>
+    <Description>Model: Mobilenet Float</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/tensorflow-lite-1.1.0</Test>
+    <Arguments>--graph=mobilenet_v1_1.0_224_quant.tflite</Arguments>
+    <Description>Model: Mobilenet Quant</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/tensorflow-lite-1.1.0</Test>
+    <Arguments>--graph=squeezenet.tflite</Arguments>
+    <Description>Model: SqueezeNet</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/onnx-1.22.0</Test>
+    <Arguments>resnet50-v1-12-int8/resnet50-v1-12-int8.onnx -e cpu</Arguments>
+    <Description>Model: ResNet50 v1-12-int8 - Device: CPU - Executor: Standard</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/onnx-1.22.0</Test>
+    <Arguments>yolov4/yolov4.onnx -e cpu</Arguments>
+    <Description>Model: yolov4 - Device: CPU - Executor: Standard</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/onnx-1.22.0</Test>
+    <Arguments>super_resolution/super_resolution.onnx -e cpu</Arguments>
+    <Description>Model: super-resolution-10 - Device: CPU - Executor: Standard</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/ncnn-1.6.0</Test>
+    <Arguments>-1</Arguments>
+    <Description>Target: CPU</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/mnn-3.1.0</Test>
+    <Mode>BATCH</Mode>
+  </Execute>
+  <Execute>
+    <Test>pts/llama-cpp-2.3.0</Test>
+    <Arguments>BLAS -m ../granite-3.0-3b-a800m-instruct-Q8_0.gguf -n 128 -p 0</Arguments>
+    <Description>Backend: CPU BLAS - Model: granite-3.0-3b-a800m-instruct-Q8_0 - Test: Text Generation 128</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/llama-cpp-2.3.0</Test>
+    <Arguments>BLAS -m ../granite-3.0-3b-a800m-instruct-Q8_0.gguf -n 0 -p 512</Arguments>
+    <Description>Backend: CPU BLAS - Model: granite-3.0-3b-a800m-instruct-Q8_0 - Test: Prompt Processing 512</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/whisper-cpp-1.1.0</Test>
+    <Arguments>-m models/ggml-base.en.bin -f ../2016-state-of-the-union.wav</Arguments>
+    <Description>Model: ggml-base.en - Input: 2016 State of the Union</Description>
+  </Execute>
+</PhoronixTestSuite>

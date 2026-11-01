@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--Ionity Bench 1.0.0 (Centurion) on Phoronix Test Suite | (c) 2018-2026 Antwerp Designs | Ionity (Pty) Ltd - AEDI | Policy 986 AED | GPL-3.0-or-later-->
+<PhoronixTestSuite>
+  <SuiteInformation>
+    <Title>Ionity IoT Gateway</Title>
+    <Version>1.0.0</Version>
+    <TestType>System</TestType>
+    <Description>The Ionity IoT Gateway profile models a telemetry gateway / RMS collector: SQLite buffering (ingest, query, mixed), MQTT-style JSON processing (small, batched, Sparkplug-B), signed-message cryptography (HMAC, SHA-256, PBKDF2), loopback networking in broker shape (RPC round trips, 32-connection fan-out) and timer jitter. Fully offline.</Description>
+    <Maintainer>Johan Wilhelm van Antwerp - Ionity (Pty) Ltd</Maintainer>
+  </SuiteInformation>
+  <Execute>
+    <Test>ionity/io-telemetry-sqlite</Test>
+    <Mode>BATCH</Mode>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-json-mqtt</Test>
+    <Mode>BATCH</Mode>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-crypto-edge</Test>
+    <Arguments>hmac-small</Arguments>
+    <Description>Algorithm: HMAC-SHA256 Small Messages</Description>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-crypto-edge</Test>
+    <Arguments>sha256</Arguments>
+    <Description>Algorithm: SHA-256</Description>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-crypto-edge</Test>
+    <Arguments>pbkdf2</Arguments>
+    <Description>Algorithm: PBKDF2 Key Derivation</Description>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-net-loopback</Test>
+    <Arguments>rpc</Arguments>
+    <Description>Pattern: RPC Round Trips</Description>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-net-loopback</Test>
+    <Arguments>fanout</Arguments>
+    <Description>Pattern: 32-Connection Fan-out</Description>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-latency-rt</Test>
+    <Arguments>p99</Arguments>
+    <Description>Metric: 99th Percentile</Description>
+  </Execute>
+</PhoronixTestSuite>

@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!--Ionity Bench 1.0.0 (Centurion) on Phoronix Test Suite | (c) 2018-2026 Antwerp Designs | Ionity (Pty) Ltd - AEDI | Policy 986 AED | GPL-3.0-or-later-->
+<PhoronixTestSuite>
+  <SuiteInformation>
+    <Title>Ionity Server / RMS</Title>
+    <Version>1.0.0</Version>
+    <TestType>System</TestType>
+    <Description>The Ionity Server / RMS profile is for the back-end hosts that terminate device fleets - Remote Management Systems, brokers, APIs and dashboards: Ionity IO-Net-Loopback and IO-Crypto-Edge together with nginx at 100/500 connections, Redis SET/GET, Memcached 1:10, pgbench, OpenSSL SHA256 / AES-256-GCM / RSA4096, Zstd level 3 / 19 and stress-ng CPU / crypto / memcpy from OpenBenchmarking.org.</Description>
+    <Maintainer>Johan Wilhelm van Antwerp - Ionity (Pty) Ltd</Maintainer>
+  </SuiteInformation>
+  <Execute>
+    <Test>ionity/io-net-loopback</Test>
+    <Mode>BATCH</Mode>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-crypto-edge</Test>
+    <Arguments>sha256</Arguments>
+    <Description>Algorithm: SHA-256</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/nginx-3.0.1</Test>
+    <Arguments>-c 100</Arguments>
+    <Description>Connections: 100</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/nginx-3.0.1</Test>
+    <Arguments>-c 500</Arguments>
+    <Description>Connections: 500</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/redis-1.4.0</Test>
+    <Arguments>-t set -c 50</Arguments>
+    <Description>Test: SET - Parallel Connections: 50</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/redis-1.4.0</Test>
+    <Arguments>-t get -c 50</Arguments>
+    <Description>Test: GET - Parallel Connections: 50</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/memcached-1.2.0</Test>
+    <Arguments>--ratio=1:10</Arguments>
+    <Description>Set To Get Ratio: 1:10</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/pgbench-1.16.2</Test>
+    <Arguments>-s 100 -c 100</Arguments>
+    <Description>Scaling Factor: 100 - Clients: 100 - Mode: Read Write</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/openssl-3.6.0</Test>
+    <Arguments>sha256</Arguments>
+    <Description>Algorithm: SHA256</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/openssl-3.6.0</Test>
+    <Arguments>-evp aes-256-gcm</Arguments>
+    <Description>Algorithm: AES-256-GCM</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/openssl-3.6.0</Test>
+    <Arguments>rsa4096</Arguments>
+    <Description>Algorithm: RSA4096</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/compress-zstd-1.6.0</Test>
+    <Arguments>-b3</Arguments>
+    <Description>Compression Level: 3</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/compress-zstd-1.6.0</Test>
+    <Arguments>-b19</Arguments>
+    <Description>Compression Level: 19</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/stress-ng-1.13.0</Test>
+    <Arguments>--cpu -1 --cpu-method all --no-rand-seed</Arguments>
+    <Description>Test: CPU Stress</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/stress-ng-1.13.0</Test>
+    <Arguments>--crypt -1 --no-rand-seed</Arguments>
+    <Description>Test: Crypto</Description>
+  </Execute>
+  <Execute>
+    <Test>pts/stress-ng-1.13.0</Test>
+    <Arguments>--memcpy -1 --no-rand-seed</Arguments>
+    <Description>Test: Memory Copying</Description>
+  </Execute>
+</PhoronixTestSuite>

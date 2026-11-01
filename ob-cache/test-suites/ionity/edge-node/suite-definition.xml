@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--Ionity Bench 1.0.0 (Centurion) on Phoronix Test Suite | (c) 2018-2026 Antwerp Designs | Ionity (Pty) Ltd - AEDI | Policy 986 AED | GPL-3.0-or-later-->
+<PhoronixTestSuite>
+  <SuiteInformation>
+    <Title>Ionity Edge Node</Title>
+    <Version>1.0.0</Version>
+    <TestType>System</TestType>
+    <Description>The Ionity Edge Node profile characterises single-board computers and fanless gateways (Raspberry Pi 4/5, Radxa ROCK, Orange Pi, Jetson, Intel N-series) the way Ionity deploys them: compute (IO-Core single and all-core), memory bandwidth (IO-Mem), sustained performance under heat (IO-Thermal-Sustain 3 minutes), timer jitter for control loops (IO-Latency-RT) and durable storage commits (IO-Storage-Edge). Fully offline.</Description>
+    <Maintainer>Johan Wilhelm van Antwerp - Ionity (Pty) Ltd</Maintainer>
+  </SuiteInformation>
+  <Execute>
+    <Test>ionity/io-core</Test>
+    <Arguments>1</Arguments>
+    <Description>Threads: Single Core</Description>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-core</Test>
+    <Arguments>0</Arguments>
+    <Description>Threads: All CPU Cores</Description>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-mem</Test>
+    <Arguments>Copy</Arguments>
+    <Description>Kernel: Copy</Description>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-mem</Test>
+    <Arguments>Triad</Arguments>
+    <Description>Kernel: Triad</Description>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-thermal-sustain</Test>
+    <Arguments>180</Arguments>
+    <Description>Duration: 3 Minutes</Description>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-latency-rt</Test>
+    <Arguments>p99</Arguments>
+    <Description>Metric: 99th Percentile</Description>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-latency-rt</Test>
+    <Arguments>max</Arguments>
+    <Description>Metric: Maximum Latency</Description>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-storage-edge</Test>
+    <Arguments>fsync-write</Arguments>
+    <Description>Workload: Durable 4K Random Write + fsync</Description>
+  </Execute>
+  <Execute>
+    <Test>ionity/io-storage-edge</Test>
+    <Arguments>rand-read</Arguments>
+    <Description>Workload: 4K Random Read</Description>
+  </Execute>
+</PhoronixTestSuite>
