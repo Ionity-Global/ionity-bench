@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--Ionity Bench 1.0.0 (Centurion) on Phoronix Test Suite | (c) 2018-2026 Antwerp Designs | Ionity (Pty) Ltd - AEDI | Policy 986 AED | GPL-3.0-or-later-->
+<PhoronixTestSuite>
+  <TestInformation>
+    <Title>Ionity IO-Net-Loopback</Title>
+    <AppVersion>1.0.0</AppVersion>
+    <Description>Ionity Bench IO-Net-Loopback measures the host TCP stack and scheduler path over loopback, isolating it from the physical NIC: 256 KiB streaming sends (MB/s), 128-byte request/reply round trips (RPC/sec) and a 32-connection 1 KiB echo fan-out in the shape of an MQTT broker (messages/sec). Uses only the Python standard library.</Description>
+    <ResultScale>MB/s</ResultScale>
+    <Proportion>HIB</Proportion>
+    <TimesToRun>3</TimesToRun>
+  </TestInformation>
+  <TestProfile>
+    <Version>1.0.0</Version>
+    <SupportedPlatforms>Linux, BSD, MacOSX, Solaris</SupportedPlatforms>
+    <SoftwareType>Benchmark</SoftwareType>
+    <TestType>Network</TestType>
+    <License>Free</License>
+    <Status>Verified</Status>
+    <ExternalDependencies>python</ExternalDependencies>
+    <EnvironmentSize>0.01</EnvironmentSize>
+    <ProjectURL>https://github.com/Ionity-Global/ionity-bench</ProjectURL>
+    <InternalTags>Ionity, Edge, Network, MQTT</InternalTags>
+    <Maintainer>Johan Wilhelm van Antwerp - Ionity (Pty) Ltd</Maintainer>
+  </TestProfile>
+  <TestSettings>
+    <Default>
+      <AllowCacheShare>TRUE</AllowCacheShare>
+    </Default>
+    <Option>
+      <DisplayName>Pattern</DisplayName>
+      <Identifier>pattern</Identifier>
+      <Menu>
+        <Entry>
+          <Name>Stream</Name>
+          <Value>stream</Value>
+        </Entry>
+        <Entry>
+          <Name>RPC Round Trips</Name>
+          <Value>rpc</Value>
+        </Entry>
+        <Entry>
+          <Name>32-Connection Fan-out</Name>
+          <Value>fanout</Value>
+        </Entry>
+      </Menu>
+    </Option>
+  </TestSettings>
+</PhoronixTestSuite>

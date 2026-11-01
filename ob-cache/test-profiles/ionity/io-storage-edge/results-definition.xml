@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--Ionity Bench 1.0.0 (Centurion) on Phoronix Test Suite | (c) 2018-2026 Antwerp Designs | Ionity (Pty) Ltd - AEDI | Policy 986 AED | GPL-3.0-or-later-->
+<PhoronixTestSuite>
+  <ResultsParser>
+    <OutputTemplate>IONITY_RESULT: #_RESULT_#</OutputTemplate>
+    <LineHint>IONITY_RESULT:</LineHint>
+    <MatchToTestArguments>fsync-write</MatchToTestArguments>
+    <ResultScale>IOPS</ResultScale>
+    <ResultProportion>HIB</ResultProportion>
+  </ResultsParser>
+  <ResultsParser>
+    <OutputTemplate>IONITY_RESULT: #_RESULT_#</OutputTemplate>
+    <LineHint>IONITY_RESULT:</LineHint>
+    <MatchToTestArguments>rand-read</MatchToTestArguments>
+    <ResultScale>IOPS</ResultScale>
+    <ResultProportion>HIB</ResultProportion>
+  </ResultsParser>
+  <ResultsParser>
+    <OutputTemplate>IONITY_RESULT: #_RESULT_#</OutputTemplate>
+    <LineHint>IONITY_RESULT:</LineHint>
+    <MatchToTestArguments>seq-write</MatchToTestArguments>
+    <ResultScale>MB/s</ResultScale>
+    <ResultProportion>HIB</ResultProportion>
+  </ResultsParser>
+</PhoronixTestSuite>

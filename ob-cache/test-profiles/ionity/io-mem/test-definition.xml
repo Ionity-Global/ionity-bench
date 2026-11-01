@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--Ionity Bench 1.0.0 (Centurion) on Phoronix Test Suite | (c) 2018-2026 Antwerp Designs | Ionity (Pty) Ltd - AEDI | Policy 986 AED | GPL-3.0-or-later-->
+<PhoronixTestSuite>
+  <TestInformation>
+    <Title>Ionity IO-Mem</Title>
+    <AppVersion>1.0.0</AppVersion>
+    <Description>Ionity Bench IO-Mem measures sustained system memory bandwidth with STREAM-style Copy, Scale, Add and Triad kernels across all CPU cores. Array sizes auto-scale to 4x the last-level cache while staying within 1/8 of physical RAM so single-board computers with 1-2 GB are measured fairly.</Description>
+    <ResultScale>MB/s</ResultScale>
+    <Proportion>HIB</Proportion>
+    <TimesToRun>3</TimesToRun>
+  </TestInformation>
+  <TestProfile>
+    <Version>1.0.0</Version>
+    <SupportedPlatforms>Linux, BSD, MacOSX, Solaris</SupportedPlatforms>
+    <SoftwareType>Benchmark</SoftwareType>
+    <TestType>Memory</TestType>
+    <License>Free</License>
+    <Status>Verified</Status>
+    <ExternalDependencies>build-utilities</ExternalDependencies>
+    <EnvironmentSize>1</EnvironmentSize>
+    <ProjectURL>https://github.com/Ionity-Global/ionity-bench</ProjectURL>
+    <InternalTags>Ionity, SMP, Edge</InternalTags>
+    <Maintainer>Johan Wilhelm van Antwerp - Ionity (Pty) Ltd</Maintainer>
+  </TestProfile>
+  <TestSettings>
+    <Default>
+      <AllowCacheShare>TRUE</AllowCacheShare>
+    </Default>
+    <Option>
+      <DisplayName>Kernel</DisplayName>
+      <Identifier>kernel</Identifier>
+      <Menu>
+        <Entry>
+          <Name>Copy</Name>
+          <Value>Copy</Value>
+        </Entry>
+        <Entry>
+          <Name>Scale</Name>
+          <Value>Scale</Value>
+        </Entry>
+        <Entry>
+          <Name>Add</Name>
+          <Value>Add</Value>
+        </Entry>
+        <Entry>
+          <Name>Triad</Name>
+          <Value>Triad</Value>
+        </Entry>
+      </Menu>
+    </Option>
+  </TestSettings>
+</PhoronixTestSuite>
