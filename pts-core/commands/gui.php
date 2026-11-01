@@ -113,14 +113,14 @@ class gui implements pts_option_interface
 			}
 			else
 			{
-				$server_launcher .= getenv('PHP_BIN') . ' -S ' . $server_ip . ':' . $web_port . ' -t ' . PTS_CORE_PATH . 'web-interface 2> null  &' . PHP_EOL;
+				$server_launcher .= '"' . getenv('PHP_BIN') . '" -S ' . $server_ip . ':' . $web_port . ' -t "' . PTS_CORE_PATH . 'web-interface" 2> nul' . PHP_EOL; // quoted: install paths may contain spaces (Ionity fix)
 			}
 			$server_launcher .= 'exit' . PHP_EOL . PHP_EOL;
 
 			// WebSocket Server Setup
 			$server_launcher .= ':run_ws_server' . PHP_EOL;
-			$server_launcher .= 'cd ' . getenv('PTS_DIR') . PHP_EOL;
-			$server_launcher .= getenv('PHP_BIN') . ' pts-core\\phoronix-test-suite.php start-ws-server &' . PHP_EOL;
+			$server_launcher .= 'cd /d "' . getenv('PTS_DIR') . '"' . PHP_EOL;
+			$server_launcher .= '"' . getenv('PHP_BIN') . '" pts-core\\phoronix-test-suite.php start-ws-server' . PHP_EOL; // quoted (Ionity fix)
 			$server_launcher .= 'exit';
 
 			// I dont believe this needs to be done for windows?
