@@ -15,7 +15,7 @@ a:active
 }
 .alert
 {
-	background: #dd4b39;
+	background: #00BFFF;
 	color: #fff;
 }
 div#pts_web_container
@@ -64,7 +64,7 @@ div#pts_header_left a, h2 a, h3 a
 {
 	padding-right: 30px;
 	text-decoration: none;
-	color: #044374;
+	color: #0d1b2a;
 	padding: 5px 2px;
 }
 div#pts_header_left a:hover, h2 a:hover, h3 a:hover
@@ -112,7 +112,7 @@ td input, td select
 th
 {
 	border: solid #fff 1px;
-	background: #044374;
+	background: #0d1b2a;
 	color: #FFF;
 	font-weight: bold;
 	padding: 2px 6px;
@@ -147,7 +147,7 @@ h2
 h3
 {
 	font-size: 125%;
-	color: #044374;
+	color: #0d1b2a;
 }
 h4
 {
@@ -174,7 +174,7 @@ div.pts_test_progress_area p
 }
 div.pts_test_progress_area p strong, div#benchmark_status_window strong
 {
-	color: #044374
+	color: #0d1b2a
 }
 div#pts_web_container div#pts_main_region
 {
@@ -194,7 +194,7 @@ form
 }
 input, textarea
 {
-	border: solid #044374 1px;
+	border: solid #0d1b2a 1px;
 	color: #1F1F1F;
 	font-weight: bold;
 	padding: 3px 6px;
@@ -204,7 +204,7 @@ input, textarea
 }
 p a
 {
-	color: #044374;
+	color: #0d1b2a;
 	text-decoration: none;
 	font-weight: bold;
 }
@@ -214,7 +214,7 @@ p a:hover
 }
 button
 {
-	background: #044374;
+	background: #0d1b2a;
 	border: #1F1F1F;
 	color: #FFF;
 	font-weight: bold;
@@ -240,7 +240,7 @@ div#pts_web_container div#pts_copyright
 div.pts_system_component_bar
 {
 	padding: 5px 10px;
-	background: #044374;
+	background: #0d1b2a;
 	border-radius: 6px;
 	border: solid #1F1F1F 1px;
 	display: inline-block;
@@ -263,7 +263,7 @@ div.pts_system_component_bar h1
 }
 div#system_log_viewer
 {
-	background: #044374;
+	background: #0d1b2a;
 	color: #FFF;
 	border-radius: 16px;
 	border: solid #1F1F1F 1px;
@@ -305,7 +305,7 @@ a div.pts_blue_bar:hover
 }
 div.pts_blue_bar
 {
-	background: #044374;
+	background: #0d1b2a;
 	color: #FFF;
 	border-radius: 6px;
 	border: solid #1F1F1F 1px;
@@ -317,7 +317,7 @@ div.pts_blue_bar
 }
 div.pts_list_box
 {
-	background: #044374;
+	background: #0d1b2a;
 	color: #FFF;
 	border-radius: 12px;
 	border: solid #1F1F1F 1px;
@@ -400,7 +400,7 @@ table#notification_area td
 }
 table#notification_area td a
 {
-	color: #044374;
+	color: #0d1b2a;
 }
 table#notification_area td p
 {
@@ -502,7 +502,7 @@ div#pts_side_pane a
 }
 div#pts_side_pane a li:hover
 {
-	color: #044374;
+	color: #0d1b2a;
 }
 div#test_main_area
 {

@@ -73,7 +73,7 @@ if($webui_class === false)
 <script src="js/pts-web-interface.js" type="text/javascript"></script>
 <script src="js/pts-web-socket.js" type="text/javascript"></script>
 <script src="js/pts-web-functions.js" type="text/javascript"></script>
-<title><?php $page_title = class_exists($webui_class) ? $webui_class::page_title() : null; echo $page_title != null ? $page_title . ' - Phoronix Test Suite' : pts_core::program_title(); ?></title>
+<title><?php $page_title = class_exists($webui_class) ? $webui_class::page_title() : null; echo $page_title != null ? $page_title . ' - Ionity Bench' : pts_core::program_title(); ?></title>
 </head>
 <body>
 <script type="text/javascript">
@@ -125,7 +125,7 @@ if($webui_class === false)
 		}
 
 		echo $page_header; ?></div>
-		<div id="pts_logo_right"><a href="http://www.phoronix-test-suite.com/" target="_blank"><img src="/assets/pts-web-logo.png" /></a></div>
+		<div id="pts_logo_right"><a href="https://www.ionity.today" target="_blank"><img src="/assets/ionity-web-logo.png" alt="Ionity Bench" /></a></div>
 		<div id="pts_benchmark_button_area"><script type="text/javascript"> update_benchmark_button(); </script></div>
 	</div>
 	<?php } // $page_header !== -1 ?>
@@ -139,7 +139,7 @@ if($page_ret == -1 && is_file('html/' . $webui_class . '.html'))
 
 ?>
 	</div>
-	<div id="pts_copyright"><?php //$DEBUG_END_TIME = microtime(true); $DEBUG_TIME = $DEBUG_END_TIME - $DEBUG_START_TIME; echo '<strong>Page Rendering Took: ' . $DEBUG_TIME . ' secs.</strong> '; ?>Copyright &#xA9; 2008 - <?php echo date('Y'); ?> by Phoronix Media. All trademarks used are properties of their respective owners. All rights reserved. <strong><?php echo pts_core::program_title(); ?></strong></div>
+	<div id="pts_copyright"><?php //$DEBUG_END_TIME = microtime(true); $DEBUG_TIME = $DEBUG_END_TIME - $DEBUG_START_TIME; echo '<strong>Page Rendering Took: ' . $DEBUG_TIME . ' secs.</strong> '; ?><strong><?php echo pts_core::program_title(); ?></strong> &middot; &#xA9; 2018 - <?php echo date('Y'); ?> Antwerp Designs | Ionity (Pty) Ltd - TM2 - Policy 986 AED &middot; Engine &#xA9; 2008 - <?php echo date('Y'); ?> Phoronix Media. All trademarks used are properties of their respective owners. &middot; <a href="https://www.ionity.today" target="_blank">ionity.today</a></div>
 <script type="text/javascript">
 	pts_web_socket.connect();
 </script>

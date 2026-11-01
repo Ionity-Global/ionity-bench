@@ -40,9 +40,13 @@ class gui implements pts_option_interface
 			return false;
 		}
 
-		echo pts_client::cli_just_bold(PHP_EOL . 'THE PHORONIX TEST SUITE WEB GUI IS CURRENTLY DEPRECATED AND UNMAINTAINED. NO FUTURE IMPROVEMENTS TO THIS GUI ARE PLANNED AT THIS TIME UNLESS THERE IS ENTERPRISE SUPPORT INTEREST.' . PHP_EOL . PHP_EOL . 'THOSE WANTING TO MAKE USE OF A PHORONIX TEST SUITE USER-INTERFACE ARE ENCOURAGED TO USE THE PHOROMATIC [https://www.phoromatic.com/] COMPONENT OF THE PHORONIX TEST SUITE. THERE IS ALSO `phoronix-test-suite interactive` and `phoronix-test-suite-shell` FOR A SELF-GUIDED PHORONIX TEST SUITE EXPERIENCE.' . PHP_EOL . PHP_EOL);
-		echo 'Continuing in 10 seconds...' . PHP_EOL;
-		sleep(10);
+		if(getenv('IONITY_BENCH')) { echo PHP_EOL . pts_client::cli_just_bold(pts_core::ionity_banner()) . PHP_EOL . 'Starting the Ionity Bench web GUI (upstream HTML5 interface, maintained by Ionity on a best-effort basis)...' . PHP_EOL; }
+		else echo pts_client::cli_just_bold(PHP_EOL . 'THE PHORONIX TEST SUITE WEB GUI IS CURRENTLY DEPRECATED AND UNMAINTAINED. NO FUTURE IMPROVEMENTS TO THIS GUI ARE PLANNED AT THIS TIME UNLESS THERE IS ENTERPRISE SUPPORT INTEREST.' . PHP_EOL . PHP_EOL . 'THOSE WANTING TO MAKE USE OF A PHORONIX TEST SUITE USER-INTERFACE ARE ENCOURAGED TO USE THE PHOROMATIC [https://www.phoromatic.com/] COMPONENT OF THE PHORONIX TEST SUITE. THERE IS ALSO `phoronix-test-suite interactive` and `phoronix-test-suite-shell` FOR A SELF-GUIDED PHORONIX TEST SUITE EXPERIENCE.' . PHP_EOL . PHP_EOL);
+		if(getenv('IONITY_BENCH') == false)
+		{
+			echo 'Continuing in 10 seconds...' . PHP_EOL;
+			sleep(10);
+		}
 
 		$web_port = 0;
 		$blocked_ports = array(2049, 3659, 4045, 6000);
