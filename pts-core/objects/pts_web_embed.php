@@ -384,7 +384,7 @@ class pts_web_embed
 			$html .= implode('<br />', $system_dependencies) . '<br />';
 		}
 		
-		if(stripos($test_profile->get_identifier(0), 'local/') === false)
+		if(!pts_openbenchmarking::is_local_repository(substr($test_profile->get_identifier(0), 0, strpos($test_profile->get_identifier(0), '/'))))
 		{
 			$html .= PHP_EOL . '<br /><strong>OpenBenchmarking.org Test Profile Page: </strong>' . '<a href="https://openbenchmarking.org/test/' . $test_profile->get_identifier() . '">https://openbenchmarking.org/test/' . $test_profile->get_identifier() . '</a><br />';
 		}

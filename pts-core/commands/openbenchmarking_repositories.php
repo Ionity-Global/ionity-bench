@@ -31,7 +31,7 @@ class openbenchmarking_repositories implements pts_option_interface
 		$repos = array();
 		foreach(pts_openbenchmarking::linked_repositories() as $repo)
 		{
-			if($repo == 'local')
+			if(pts_openbenchmarking::is_local_repository($repo))
 			{
 				// Skip local since it's a fake repository
 				continue;

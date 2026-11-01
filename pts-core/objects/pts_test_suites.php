@@ -45,9 +45,12 @@ class pts_test_suites
 	public static function local_suites()
 	{
 		$local_suites = array();
-		foreach(pts_file_io::glob(PTS_TEST_SUITE_PATH . 'local/*/suite-definition.xml') as $path)
+		foreach(pts_openbenchmarking::local_repositories() as $repo)
 		{
-			$local_suites[] = 'local/' . basename(dirname($path));
+			foreach(pts_file_io::glob(PTS_TEST_SUITE_PATH . $repo . '/*/suite-definition.xml') as $path)
+			{
+				$local_suites[] = $repo . '/' . basename(dirname($path));
+			}
 		}
 
 		return $local_suites;

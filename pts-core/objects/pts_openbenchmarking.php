@@ -351,9 +351,9 @@ class pts_openbenchmarking
 		{
 			pts_file_io::mkdir(PTS_OPENBENCHMARKING_SCRATCH_PATH . $repo_name);
 
-			if($repo_name == 'local')
+			if(self::is_local_repository($repo_name))
 			{
-				// Local is a special case, not actually a real repository
+				// Local (and the bundled Ionity namespace) are special cases, not actually OpenBenchmarking.org repositories
 				continue;
 			}
 
@@ -469,9 +469,19 @@ class pts_openbenchmarking
 	{
 		return self::$openbenchmarking_index_refreshed;
 	}
+	public static function local_repositories()
+	{
+		// Repositories that live purely on disk (no OpenBenchmarking.org index).
+		// 'ionity' holds the Ionity Bench test profiles and suites shipped in ob-cache/.
+		return array('local', IONITY_BENCH_REPOSITORY_ID);
+	}
+	public static function is_local_repository($repo)
+	{
+		return in_array($repo, self::local_repositories());
+	}
 	public static function official_repositories()
 	{
-		$repos = array('local', 'pts', 'system', 'git');
+		$repos = array('local', IONITY_BENCH_REPOSITORY_ID, 'pts', 'system', 'git');
 
 		if((PTS_IS_CLIENT && phodevi::is_windows()) || defined('PHOROMATIC_SERVER_WEB_INTERFACE'))
 		{
@@ -999,7 +1009,7 @@ class pts_openbenchmarking
 
 		foreach($repos as $repo)
 		{
-			if($repo == 'local')
+			if(self::is_local_repository($repo))
 			{
 				if(self::check_only_type_compare($check_only_type, 'test'))
 				{

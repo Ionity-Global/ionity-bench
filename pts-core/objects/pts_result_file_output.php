@@ -968,7 +968,7 @@ class pts_result_file_output
 		}
 
 		// Footer
-		$html .= '<hr /><p align="center">' . pts_core::program_title() . '</p>';
+		$html .= '<hr /><p align="center">' . pts_core::program_title() . '<br /><a href="' . IONITY_BENCH_URL . '">' . IONITY_BENCH_URL . '</a> | &copy; 2018-2026 Antwerp Designs | Ionity (Pty) Ltd - TM2 - Policy 986 AED</p>';
 		$html .= '</body></html>';
 
 		return $html;
@@ -982,9 +982,9 @@ class pts_result_file_output
 		$pdf = new pts_pdf_template($result_file->get_title(), null);
 
 		$pdf->AddPage();
-		$pdf->Image(PTS_CORE_STATIC_PATH . 'images/pts-308x160.png', 69, 85, 73, 38);
+		$pdf->Image(PTS_CORE_STATIC_PATH . 'images/ionity-bench-308x160.png', 69, 85, 57, 38);
 		$pdf->Ln(120);
-		$pdf->WriteStatementCenter('www.phoronix-test-suite.com');
+		$pdf->WriteStatementCenter('www.ionity.today | Ionity Bench on the Phoronix Test Suite (www.phoronix-test-suite.com)');
 		$pdf->Ln(15);
 		$pdf->WriteBigHeaderCenter($result_file->get_title());
 		$pdf->WriteText($result_file->get_description());

@@ -204,7 +204,9 @@ class pts_client
 			PTS_TEST_PROFILE_PATH,
 			PTS_TEST_SUITE_PATH,
 			PTS_TEST_PROFILE_PATH . 'local/',
-			PTS_TEST_SUITE_PATH . 'local/'
+			PTS_TEST_SUITE_PATH . 'local/',
+			PTS_TEST_PROFILE_PATH . IONITY_BENCH_REPOSITORY_ID . '/',
+			PTS_TEST_SUITE_PATH . IONITY_BENCH_REPOSITORY_ID . '/'
 			);
 		
 		$tp_pts_dir_not = is_dir(PTS_TEST_PROFILE_PATH . 'pts/');

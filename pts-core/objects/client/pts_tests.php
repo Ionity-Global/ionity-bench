@@ -106,9 +106,12 @@ class pts_tests
 	public static function local_tests()
 	{
 		$local_tests = array();
-		foreach(pts_file_io::glob(PTS_TEST_PROFILE_PATH . 'local/*/test-definition.xml') as $path)
+		foreach(pts_openbenchmarking::local_repositories() as $repo)
 		{
-			$local_tests[] = 'local/' . basename(dirname($path));
+			foreach(pts_file_io::glob(PTS_TEST_PROFILE_PATH . $repo . '/*/test-definition.xml') as $path)
+			{
+				$local_tests[] = $repo . '/' . basename(dirname($path));
+			}
 		}
 
 		return $local_tests;

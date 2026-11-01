@@ -84,8 +84,18 @@ class pts_core
 	}
 	public static function program_title()
 	{
-		// First argument was originally $show_codename, but no longer used/honored
+		// Ionity Bench branding layer. The underlying engine version is kept visible so
+		// result files remain traceable to the exact Phoronix Test Suite core in use.
+		return IONITY_BENCH_NAME . ' v' . IONITY_BENCH_VERSION . ' (' . IONITY_BENCH_ENGINE . ' v' . PTS_VERSION . ')';
+	}
+	public static function engine_title()
+	{
+		// Upstream-style title, used where OpenBenchmarking.org compatibility matters.
 		return 'Phoronix Test Suite v' . PTS_VERSION;
+	}
+	public static function ionity_banner()
+	{
+		return IONITY_BENCH_NAME . ' v' . IONITY_BENCH_VERSION . ' "' . IONITY_BENCH_CODENAME . '" | ' . IONITY_BENCH_TAGLINE . ' | ' . IONITY_BENCH_URL;
 	}
 }
 function pts_define($name, $value = null)
@@ -232,6 +242,20 @@ pts_define('PTS_VERSION', '10.8.6');
 pts_define('PTS_CORE_VERSION', 10860);
 pts_define('PTS_RELEASE_DATE', '20260101');
 pts_define('PTS_CODENAME', 'Nesseby');
+
+// Ionity Bench - branding layer on top of the Phoronix Test Suite engine.
+// (c) 2018-2026 Antwerp Designs | Ionity (Pty) Ltd - TM2 - Policy 986 AED - https://www.ionity.today
+// Code remains GPL-3.0-or-later (see COPYING). Brand marks: see NOTICE-IONITY.md.
+pts_define('IONITY_BENCH_NAME', 'Ionity Bench');
+pts_define('IONITY_BENCH_VERSION', '1.0.0');
+pts_define('IONITY_BENCH_CODENAME', 'Centurion');
+pts_define('IONITY_BENCH_RELEASE_DATE', '20261101');
+pts_define('IONITY_BENCH_ENGINE', 'Phoronix Test Suite');
+pts_define('IONITY_BENCH_TAGLINE', 'Building Tomorrow, Today.');
+pts_define('IONITY_BENCH_URL', 'https://www.ionity.today');
+pts_define('IONITY_BENCH_REPO', 'https://github.com/Ionity-Global/ionity-bench');
+pts_define('IONITY_BENCH_ORG', 'Ionity (Pty) Ltd | AEDI');
+pts_define('IONITY_BENCH_REPOSITORY_ID', 'ionity'); // on-disk test profile / suite namespace, e.g. ionity/io-core
 
 pts_define('PTS_IS_CLIENT', (defined('PTS_MODE') && strstr(PTS_MODE, 'CLIENT') !== false));
 pts_define('PTS_IS_WEB_CLIENT', (defined('PTS_MODE') && PTS_MODE == 'WEB_CLIENT'));

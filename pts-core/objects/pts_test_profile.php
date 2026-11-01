@@ -76,7 +76,7 @@ class pts_test_profile extends pts_test_profile_parser
 			$json_file = pts_file_io::file_get_contents($this->get_resource_dir() . 'changelog.json');
 			$change_log = json_decode($json_file, true);
 		}
-		else if(PTS_IS_CLIENT && stripos($this->get_identifier(), 'local/') === false)
+		else if(PTS_IS_CLIENT && !pts_openbenchmarking::is_local_repository(substr($this->get_identifier(), 0, strpos($this->get_identifier(), '/'))))
 		{
 			// Query from OB
 			$changelog_query = pts_openbenchmarking_client::fetch_repository_test_profile_changelog($this->get_identifier(false));

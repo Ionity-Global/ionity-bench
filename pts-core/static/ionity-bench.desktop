@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Ionity Bench
+GenericName=Benchmarking Platform
+Comment=Ionity Global benchmarking platform for edge, IoT, AI and server hardware, built on the Phoronix Test Suite
+Exec=ionity-bench gui
+Icon=ionity-bench
+Terminal=false
+Type=Application
+Categories=System;Monitor;
+Keywords=benchmark;ionity;edge;iot;performance;phoronix;

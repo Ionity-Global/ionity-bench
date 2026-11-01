@@ -44,7 +44,7 @@ class dump_tests_to_git implements pts_option_interface
 
 		foreach(pts_openbenchmarking::linked_repositories() as $repo)
 		{
-			if($repo == 'local')
+			if(pts_openbenchmarking::is_local_repository($repo))
 			{
 				// Skip local since it's a fake repository
 				continue;

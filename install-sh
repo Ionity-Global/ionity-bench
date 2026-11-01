@@ -97,6 +97,14 @@ rm -f $DESTDIR$INSTALL_PREFIX/share/phoronix-test-suite/pts-core/static/images/%
 sed 's:export PTS_DIR=$(readlink -f `dirname $0`):export PTS_DIR='"$INSTALL_PREFIX"'\/share\/phoronix-test-suite:g' phoronix-test-suite > $DESTDIR$INSTALL_PREFIX/bin/phoronix-test-suite
 chmod +x $DESTDIR$INSTALL_PREFIX/bin/phoronix-test-suite
 
+# Ionity Bench launcher, icon and desktop entry (Ionity (Pty) Ltd - Policy 986 AED)
+cp ionity-bench $DESTDIR$INSTALL_PREFIX/bin/ionity-bench
+chmod +x $DESTDIR$INSTALL_PREFIX/bin/ionity-bench
+cp ionity-bench $DESTDIR$INSTALL_PREFIX/share/phoronix-test-suite/ionity-bench
+cp NOTICE-IONITY.md $DESTDIR$INSTALL_PREFIX/share/doc/phoronix-test-suite/
+cp pts-core/static/images/ionity-bench-308x160.png $DESTDIR$INSTALL_PREFIX/share/icons/hicolor/48x48/apps/ionity-bench.png
+cp pts-core/static/ionity-bench.desktop $DESTDIR$INSTALL_PREFIX/share/applications/
+
 # sed 's:\$url = PTS_PATH . \"documentation\/index.html\";:\$url = \"'"$INSTALL_PREFIX"'\/share\/doc\/packages\/phoronix-test-suite\/index.html\";:g' pts-core/commands/gui_gtk.php > $DESTDIR$INSTALL_PREFIX/share/phoronix-test-suite/pts-core/commands/gui_gtk.php
 
 # XDG MIME OpenBenchmarking support

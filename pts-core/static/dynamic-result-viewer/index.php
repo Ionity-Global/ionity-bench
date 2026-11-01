@@ -158,7 +158,7 @@ if(VIEWER_ACCESS_KEY != null && (!isset($_SESSION['AccessKey']) || $_SESSION['Ac
 <!doctype html>
 <html lang="en">
 <head>
-  <title>Phoronix Test Suite - Result Portal</title>
+  <title>Ionity Bench - Result Portal</title>
 <link rel="stylesheet" href="<?php echo CSS_RESULT_VIEWER_PATH; ?>">
 <script type="text/javascript" src="<?php echo WEB_URL_PATH; ?>/result-viewer.js?<?php echo PTS_CORE_VERSION; ?>"></script>
 <link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -167,7 +167,7 @@ if(VIEWER_ACCESS_KEY != null && (!isset($_SESSION['AccessKey']) || $_SESSION['Ac
 <body>
 <div id="login_box">
 <div id="login_box_left">
-<h1>Phoronix Test Suite</h1>
+<h1>Ionity Bench <small style="font-size:0.45em;color:#00BFFF;">on the Phoronix Test Suite</small></h1>
 <h2>Result Portal</h2>
 </div>
 <div id="login_box_right">
@@ -272,7 +272,7 @@ switch(isset($_GET['page']) ? $_GET['page'] : null)
 		{
 			break;
 		}
-		define('TITLE', $result_file->get_title() . ' - Phoronix Test Suite');
+		define('TITLE', $result_file->get_title() . ' - Ionity Bench');
 		$embed = new pts_result_viewer_embed($result_file, $results_viewing[0]);
 		$embed->allow_modifying_results(VIEWER_CAN_MODIFY_RESULTS && count($results_viewing) == 1);
 		$embed->allow_deleting_results(VIEWER_CAN_DELETE_RESULTS && count($results_viewing) == 1);
@@ -289,12 +289,12 @@ switch(isset($_GET['page']) ? $_GET['page'] : null)
 	default:
 		if(isset($uri_segments[0]) && is_file($uri_segments[0] . '.html'))
 		{
-			define('TITLE', 'Phoronix Test Suite ' . PTS_VERSION);
+			define('TITLE', 'Ionity Bench ' . IONITY_BENCH_VERSION . ' (Phoronix Test Suite ' . PTS_VERSION . ')');
 			$PAGE = file_get_contents($uri_segments[0] . '.html');
 		}
 		else
 		{
-			define('TITLE', 'Phoronix Test Suite ' . PTS_VERSION . ' Result Portal');
+			define('TITLE', 'Ionity Bench ' . IONITY_BENCH_VERSION . ' Result Portal');
 			$search_query = isset($_POST['search']) ? pts_strings::simple($_POST['search']) : null;
 			$PAGE .= '<form name="search_results" id="search_results" action="' . CURRENT_URI . '" method="post"><input type="text" name="search" id="u_search" placeholder="Search Test Results" value="' . $search_query . '" /> <select name="sort_results_by"><option value="date">Sort By Date</option><option value="title">Sort By Title</option><option value="test_count">Sort By Test Count</option><option value="system_count">Sort By System Count</option></select> <input class="primary-button" type="submit" value="Update" />
 	</form>';
@@ -423,7 +423,7 @@ if(isset($leading_msg) && $leading_msg) { echo '<div id="leading_message">' . $l
 <div id="main_area">
 <?php echo $call_get_result_html ? $embed->get_html() : $PAGE; ?>
 </div>
-<div id="footer"><hr /><br /><a href="https://www.phoronix-test-suite.com/">Phoronix Test Suite</a> <?php echo PTS_VERSION; ?> - Generated <?php echo date('j F Y H:i:s'); ?> - Page Generation Time: <?php echo round(microtime(true) - $page_start_time, 3); ?>s</div>
+<div id="footer"><hr /><br /><a href="<?php echo IONITY_BENCH_URL; ?>">Ionity Bench</a> <?php echo IONITY_BENCH_VERSION; ?> | <a href="https://www.phoronix-test-suite.com/">Phoronix Test Suite</a> <?php echo PTS_VERSION; ?> | &copy; 2018-2026 Antwerp Designs | Ionity (Pty) Ltd - TM2 - Policy 986 AED - Generated <?php echo date('j F Y H:i:s'); ?> - Page Generation Time: <?php echo round(microtime(true) - $page_start_time, 3); ?>s</div>
 </body>
 <?php }
 if(function_exists('session_start'))

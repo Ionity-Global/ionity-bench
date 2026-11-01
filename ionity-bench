@@ -1,0 +1,59 @@
+#!/bin/sh
+#
+#	Ionity Bench
+#	URLs: https://www.ionity.today | https://github.com/Ionity-Global/ionity-bench
+#	Copyright (C) 2018 - 2026, Antwerp Designs | Ionity (Pty) Ltd - AEDI
+#	ionity-bench: Branded launcher for Ionity Bench, built on the Phoronix Test Suite engine
+#	(Phoronix Test Suite: Copyright (C) 2008 - 2026, Phoronix Media / Michael Larabel)
+#
+#	This program is free software; you can redistribute it and/or modify
+#	it under the terms of the GNU General Public License as published by
+#	the Free Software Foundation; either version 3 of the License, or
+#	(at your option) any later version.
+#
+#	This program is distributed in the hope that it will be useful,
+#	but WITHOUT ANY WARRANTY; without even the implied warranty of
+#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#	GNU General Public License for more details.
+#
+#	You should have received a copy of the GNU General Public License
+#	along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+#	Governance: Policy 986 AED. Brand marks are not covered by the GPL - see NOTICE-IONITY.md.
+#
+
+if which realpath >/dev/null 2>&1 ; then
+	IONITY_BENCH_DIR=$(dirname "$(realpath "$0")")
+else
+	IONITY_BENCH_DIR=$(cd "$(dirname "$0")" && pwd)
+fi
+
+# Prefer the sibling engine launcher (git checkout / tarball), fall back to a system install.
+if [ -x "$IONITY_BENCH_DIR/phoronix-test-suite" ]; then
+	ENGINE="$IONITY_BENCH_DIR/phoronix-test-suite"
+elif [ -x /usr/share/phoronix-test-suite/phoronix-test-suite ]; then
+	ENGINE=/usr/share/phoronix-test-suite/phoronix-test-suite
+else
+	ENGINE=phoronix-test-suite
+fi
+
+export IONITY_BENCH=1
+export IONITY_BENCH_LAUNCHER="$0"
+
+# Convenience aliases: `ionity-bench edge-node` == `phoronix-test-suite benchmark ionity/edge-node`
+case "$1" in
+	""|help|--help|-h)
+		exec "$ENGINE" ionity
+		;;
+	edge-node|iot-gateway|ai-edge|storage|timeseries-db|server-rms|workstation-design|quick-check|full-spectrum|power-thermal)
+		SUITE="ionity/$1"; shift
+		exec "$ENGINE" benchmark "$SUITE" "$@"
+		;;
+	io-*)
+		TEST="ionity/$1"; shift
+		exec "$ENGINE" benchmark "$TEST" "$@"
+		;;
+	*)
+		exec "$ENGINE" "$@"
+		;;
+esac

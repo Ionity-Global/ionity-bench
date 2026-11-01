@@ -128,7 +128,7 @@ class info implements pts_option_interface
 
 				echo PHP_EOL . PHP_EOL . pts_client::cli_just_bold('Description: ') . $o->get_description() . PHP_EOL;
 
-				if(stripos($o->get_identifier(0), 'local/') === false)
+				if(!pts_openbenchmarking::is_local_repository(substr($o->get_identifier(0), 0, strpos($o->get_identifier(0), '/'))))
 				{
 					echo PHP_EOL . PHP_EOL . pts_client::cli_just_bold('OpenBenchmarking.org Test Profile: ') . 'https://openbenchmarking.org/test/' . $o->get_identifier() . PHP_EOL . PHP_EOL;
 				}
