@@ -1,0 +1,64 @@
+# Ionity Bench CI - (c) 2018-2026 Antwerp Designs | Ionity (Pty) Ltd - AEDI | Policy 986 AED | GPL-3.0-or-later
+name: Ionity Bench CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: PHP lint + XML validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PHP
+        run: sudo apt-get update && sudo apt-get install -y php-cli php-xml libxml2-utils
+      - name: php -l on every engine file
+        run: |
+          set -e
+          find pts-core -name '*.php' -print0 | xargs -0 -n1 -P4 php -l | grep -v '^No syntax errors' || true
+          find pts-core -name '*.php' -print0 | xargs -0 -n1 php -l | grep -q 'Errors parsing' && exit 1 || echo "PHP lint OK"
+      - name: Validate Ionity XML
+        run: |
+          set -e
+          for f in ob-cache/test-profiles/ionity/*/*.xml ob-cache/test-suites/ionity/*/*.xml; do xmllint --noout "$f"; done
+          echo "XML OK"
+      - name: Shell syntax of launchers and installers
+        run: |
+          set -e
+          sh -n ionity-bench
+          for f in ob-cache/test-profiles/ionity/*/install.sh; do sh -n "$f"; done
+
+  quick-check:
+    name: Run ionity/quick-check (1 trial)
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y php-cli php-xml php-zip build-essential python3
+      - name: Overview command
+        run: ./ionity-bench
+      - name: Configure batch mode
+        run: |
+          ./phoronix-test-suite user-config-set BatchMode/Configured=TRUE >/dev/null 2>&1 || true
+          CFG=$(ls ~/.phoronix-test-suite/user-config.xml /etc/phoronix-test-suite.xml 2>/dev/null | head -1)
+          sed -i -e 's#<UploadResults>TRUE#<UploadResults>FALSE#' -e 's#<PromptForTestIdentifier>TRUE#<PromptForTestIdentifier>FALSE#' \
+                 -e 's#<PromptForTestDescription>TRUE#<PromptForTestDescription>FALSE#' -e 's#<PromptSaveName>TRUE#<PromptSaveName>FALSE#' \
+                 -e 's#<RunAllTestCombinations>TRUE#<RunAllTestCombinations>FALSE#' -e 's#<Configured>FALSE#<Configured>TRUE#' "$CFG"
+      - name: Benchmark
+        env:
+          TEST_RESULTS_NAME: ci-quick-check
+          TEST_RESULTS_IDENTIFIER: github-runner
+          FORCE_TIMES_TO_RUN: "1"
+        run: ./phoronix-test-suite batch-benchmark ionity/quick-check
+      - name: Assert four results were recorded
+        run: |
+          R=$(ls ~/.phoronix-test-suite/test-results/ci-quick-check/composite.xml)
+          test "$(grep -c '<Result>' "$R")" -ge 4 && echo "quick-check OK"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ci-quick-check-results
+          path: ~/.phoronix-test-suite/test-results/ci-quick-check/
