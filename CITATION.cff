@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use Ionity Bench in published work, please cite it as below. Ionity Bench is built on the Phoronix Test Suite by Phoronix Media / Michael Larabel."
+title: "Ionity Bench"
+version: 1.0.0
+date-released: 2026-11-01
+license: GPL-3.0-or-later
+repository-code: "https://github.com/Ionity-Global/ionity-bench"
+url: "https://www.ionity.today"
+type: software
+authors:
+  - family-names: "van Antwerp"
+    given-names: "Johan Wilhelm"
+    orcid: "https://orcid.org/0009-0005-7181-0347"
+    affiliation: "Ionity (Pty) Ltd | AEDI, Centurion, Gauteng, South Africa"
+keywords:
+  - benchmark
+  - edge computing
+  - IoT
+  - Phoronix Test Suite
+  - Ionity
